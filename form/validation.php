@@ -9,7 +9,13 @@ function validation($request){ //$_POST連想配列
     }
 
     if(empty($request['email']) || !filter_var($request['email'],FILTER_VALIDATE_EMAIL)){
-        $errors[]='「メールアドレスは必須です。正しい形式で入力してください'
+        $errors[]='「メールアドレス」は必須です。正しい形式で入力してください';
+    }
+
+    if(!empty($request['url'])){
+        if(!filter_var($request['url'],FILTER_VALIDATE_URL)){
+            $errors[]='「ホームページ」は正しい形式で入力してください。';
+        }
     }
 
     if(!isset($request['gender'])){
@@ -25,7 +31,7 @@ function validation($request){ //$_POST連想配列
 
     }
     if(empty($request['caution'])){
-        $errors[]='「注意事項をご確認ください';
+        $errors[]='「注意事項」をご確認ください';
 
     }
 
